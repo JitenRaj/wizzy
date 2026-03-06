@@ -1,1 +1,1 @@
-# web-gpt
+# Wizzy : Web GPT
