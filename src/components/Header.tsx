@@ -2,9 +2,11 @@
 
 import { Menu, Settings } from 'lucide-react';
 import { useModelViewModel } from '../viewmodels/useModelViewModel';
+import { useUIStore } from '../store/uiStore';
 
 export function Header() {
   const { status } = useModelViewModel();
+  const { toggleSidebar } = useUIStore();
 
   const renderStatus = () => {
     switch (status) {
@@ -24,7 +26,10 @@ export function Header() {
   return (
     <header className="h-16 flex items-center justify-between px-4 border-b border-wizzy-border bg-wizzy-surface/50 backdrop-blur-md">
       <div className="flex items-center gap-4">
-        <button className="p-2 hover:bg-wizzy-surface-hover rounded-lg transition-colors text-wizzy-text-muted hover:text-wizzy-text-main">
+        <button 
+          onClick={toggleSidebar} 
+          className="p-2 hover:bg-wizzy-surface-hover rounded-lg transition-colors text-wizzy-text-muted hover:text-wizzy-text-main"
+        >
           <Menu size={20} />
         </button>
         <h1 className="text-xl font-bold bg-linear-to-r from-wizzy-accent to-purple-500 bg-clip-text text-transparent">
