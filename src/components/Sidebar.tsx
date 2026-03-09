@@ -1,11 +1,16 @@
 // Sidebar Component
 
-import { X, Box } from 'lucide-react';
+import { useState } from 'react';
+import { X, Box, MessageSquare } from 'lucide-react';
 import { useUIStore } from '../store/uiStore';
 import { ModelsTab } from './sidebar/ModelsTab';
+import { HistoryTab } from './sidebar/HistoryTab';
+
+type Tab = 'models' | 'history';
 
 export function Sidebar() {
   const { isSidebarOpen, setSidebarOpen } = useUIStore();
+  const [activeTab, setActiveTab] = useState<Tab>('models');
 
   if (!isSidebarOpen) return null;
 
@@ -23,8 +28,8 @@ export function Sidebar() {
         {/* Sidebar Header */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-wizzy-border shrink-0">
           <div className="flex items-center gap-2 text-wizzy-text-main font-semibold">
-            <Box size={20} className="text-wizzy-accent" />
-            Model Manager
+            {activeTab === 'models' ? <Box size={20} className="text-wizzy-accent" /> : <MessageSquare size={20} className="text-wizzy-accent" />}
+            {activeTab === 'models' ? 'Model Manager' : 'Chat History'}
           </div>
           <button 
             onClick={() => setSidebarOpen(false)}
@@ -34,9 +39,29 @@ export function Sidebar() {
           </button>
         </div>
 
-        {/* Sidebar Content*/}
+        {/* Tab Navigation */}
+        <div className="flex p-2 gap-1 bg-wizzy-surface/30 border-b border-wizzy-border shrink-0">
+          <button 
+            onClick={() => setActiveTab('models')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2 text-sm font-medium rounded-lg transition-colors ${
+              activeTab === 'models' ? 'bg-wizzy-surface text-wizzy-text-main shadow-sm border border-wizzy-border' : 'text-wizzy-text-muted hover:text-wizzy-text-main hover:bg-wizzy-surface-hover/50'
+            }`}
+          >
+            <Box size={16} /> Models
+          </button>
+          <button 
+            onClick={() => setActiveTab('history')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2 text-sm font-medium rounded-lg transition-colors ${
+              activeTab === 'history' ? 'bg-wizzy-surface text-wizzy-text-main shadow-sm border border-wizzy-border' : 'text-wizzy-text-muted hover:text-wizzy-text-main hover:bg-wizzy-surface-hover/50'
+            }`}
+          >
+            <MessageSquare size={16} /> History
+          </button>
+        </div>
+
+        {/* Sidebar Content */}
         <div className="flex-1 overflow-y-auto">
-          <ModelsTab />
+          {activeTab === 'models' ? <ModelsTab /> : <HistoryTab />}
         </div>
         
       </aside>
