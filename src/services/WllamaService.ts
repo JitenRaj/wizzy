@@ -13,9 +13,11 @@ export class WllamaService {
   async initialize(): Promise<void> {
     if (this.wllama) return;
     
+    const baseUrl = import.meta.env.BASE_URL;
+    
     this.wllama = new Wllama({
-      'single-thread/wllama.wasm': '/wllama/single-thread/wllama.wasm',
-      'multi-thread/wllama.wasm': '/wllama/multi-thread/wllama.wasm'
+      'single-thread/wllama.wasm': `${baseUrl}wllama/single-thread/wllama.wasm`,
+      'multi-thread/wllama.wasm': `${baseUrl}wllama/multi-thread/wllama.wasm`
     });
   }
 
