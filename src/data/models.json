@@ -1,14 +1,20 @@
 [
   {
-    "name": "SmolLM2 135M Instruct (Q6_K)",
-    "size": "132 MB",
-    "url": "https://huggingface.co/unsloth/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct-Q6_K.gguf"
-  },
-  {
     "name": "Qwen 2.5 0.5B Instruct (IQ3_M)",
     "size": "343 MB",
     "url": "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-IQ3_M.gguf"
-  }, 
+  },
+  
+  {
+    "name": "H2O Danube 3 Chat 500M (Q4_K_M)",
+    "size": "318 MB",
+    "url": "https://huggingface.co/h2oai/h2o-danube3-500m-chat-GGUF/resolve/main/h2o-danube3-500m-chat-Q4_K_M.gguf"
+  },
+  {
+    "name": "Qwen 2.5 Coder 0.5B (Q8_0)",
+    "size": "531 MB",
+    "url": "https://huggingface.co/bartowski/Qwen2.5-Coder-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-Coder-0.5B-Instruct-Q8_0.gguf"
+  },
   {
     "name": "Ruvltra Claude Code 0.5B (Q4_K_M)",
     "size": "379 MB",
